@@ -13,9 +13,9 @@ export class AuthService {
   async validateUser(username: string, pass: string): Promise<any> {
     let url;
     if (process.env.NODE_ENV == 'prod') {
-      url = `http://tst.user.service.solutioncore.com.br/user/username/${username}`;
-    } else {
       url = `https://user.service.solutioncore.com.br/user/username/${username}`;
+    } else {
+      url = `http://tst.user.service.solutioncore.com.br/user/username/${username}`;
     }
     const { data }: any = await firstValueFrom(
       this.httpService.get<any>(url).pipe(
@@ -35,9 +35,9 @@ export class AuthService {
   async login(user: any) {
     let url;
     if (process.env.NODE_ENV == 'prod') {
-      url = `http://tst.user.service.solutioncore.com.br/user/username/${user.username}`;
-    } else {
       url = `https://user.service.solutioncore.com.br/user/username/${user.username}`;
+    } else {
+      url = `http://tst.user.service.solutioncore.com.br/user/username/${user.username}`;
     }
     const { data }: any = await firstValueFrom(
       this.httpService.get<any>(url).pipe(
