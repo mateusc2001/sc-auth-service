@@ -11,7 +11,12 @@ export class AuthService {
   ) {}
 
   async validateUser(username: string, pass: string): Promise<any> {
-    const url = `http://tst.user.service.solutioncore.com.br/user/username/${username}`;
+    let url;
+    if (process.env.NODE_ENV == 'prod') {
+      url = `http://tst.user.service.solutioncore.com.br/user/username/${username}`;
+    } else {
+      url = `https://user.service.solutioncore.com.br/user/username/${username}`;
+    }
     const { data }: any = await firstValueFrom(
       this.httpService.get<any>(url).pipe(
         catchError((error: any) => {
@@ -28,7 +33,12 @@ export class AuthService {
   }
 
   async login(user: any) {
-    const url = `http://tst.user.service.solutioncore.com.br/user/username/${user.username}`;
+    let url;
+    if (process.env.NODE_ENV == 'prod') {
+      url = `http://tst.user.service.solutioncore.com.br/user/username/${user.username}`;
+    } else {
+      url = `https://user.service.solutioncore.com.br/user/username/${user.username}`;
+    }
     const { data }: any = await firstValueFrom(
       this.httpService.get<any>(url).pipe(
         catchError((error: any) => {
