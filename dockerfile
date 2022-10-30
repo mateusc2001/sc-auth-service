@@ -8,6 +8,10 @@ RUN npm run build
 FROM node:latest as production
 ARG NODE_ENV=dev
 ENV NODE_ENV=${NODE_ENV}
+
+ARG PORT=3002
+ENV PORT=${PORT}
+
 WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install --only=prod
