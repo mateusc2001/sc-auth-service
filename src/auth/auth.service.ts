@@ -13,7 +13,7 @@ export class AuthService {
   async validateUser(username: string, pass: string): Promise<any> {
     let url;
     if (process.env.NODE_ENV == 'prod') {
-      url = `https://user.service.solutioncore.com.br/user/username/${username}`;
+      url = `http://user.service.solutioncore.com.br/user/username/${username}`;
     } else {
       url = `http://tst.user.service.solutioncore.com.br/user/username/${username}`;
     }
@@ -35,7 +35,7 @@ export class AuthService {
   async login(user: any) {
     let url;
     if (process.env.NODE_ENV == 'prod') {
-      url = `https://user.service.solutioncore.com.br/user/username/${user.username}`;
+      url = `http://user.service.solutioncore.com.br/user/username/${user.username}`;
     } else {
       url = `http://tst.user.service.solutioncore.com.br/user/username/${user.username}`;
     }
